@@ -1,0 +1,72 @@
+
+//Get the user’s choice.
+let getUserChoice = (userInput) => {
+  userInput = userInput.toLowerCase()
+  if(userInput === 'rock'|| userInput === 'paper' || userInput === 'scissors' || userInput === 'bomb'){
+    return userInput
+  } else {
+  console.log('This is not a valid input')  
+  }
+}
+
+
+//Get the computer’s choice.
+let getComputerChoice = () => {
+ // let choice =  Math.floor(Math.random() * 2)
+  if(Math.floor(Math.random() * 2) === 0){
+    return 'paper'
+  } else if(Math.floor(Math.random() * 2) === 1){
+    return 'scissors'
+  } else {
+    return 'rock'
+  }
+}
+
+
+let determineWinner = (userChoice, computerChoice) =>{
+  if(userChoice === computerChoice){
+    return "This game was a tie!"
+  }
+
+ if(userChoice === 'bomb'){
+    if(computerChoice === 'paper' || computerChoice === 'scissors' || computerChoice === 'rock'){
+          return "You used the secret weapon! You won!"
+      }
+}
+  
+  if(userChoice === 'rock'){
+    if(computerChoice === 'scissors'){
+      return "You won!" 
+    } else {
+      return "The computer won!"
+    }
+  }
+  if(userChoice === 'paper'){
+    if(computerChoice === 'rock'){
+       return "You won!" 
+    } else {
+      return "The computer won!"
+    }
+  }
+  if(userChoice === 'scissors'){
+    if(computerChoice === 'paper'){
+       return "You won!"  
+    } else {
+    return "The computer won!"
+  }
+}
+  
+}
+
+
+function playGame(){
+  
+  let userChoice = getUserChoice('paper')
+  console.log(`you picked ${userChoice}`)
+  let computerChoice = getComputerChoice();
+  console.log(`the computer picked ${computerChoice}`)
+
+  console.log(determineWinner(userChoice, computerChoice))
+}
+
+playGame()
